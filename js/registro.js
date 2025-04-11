@@ -1,23 +1,32 @@
-import { Usuario, agregarUsuario, confirmarOpcion } from "./usuario.js";
+import { Usuario, agregarUsuario, confirmarOpcion, obtenerContadorUsuarios } from "./usuario.js";
 
 class Registro extends Usuario {
     constructor() {
-        super("", "", ""); // Se sobreescribe luego
+        super("", "", ""); // Se sobreescribe luego al llenar los datos de usuario
         this.tipoIdent = "";
         this.identify = 0;
+        
     }
 
     iniciarRegistro() {
+        this.account = obtenerContadorUsuarios() + 1; // O empieza desde 1 si prefieres
         this.seleccionarTipoIdentificacion();
         this.registrarIdentificacion();
         this.nombre = this.registrarUsuario();
         this.email = this.registrarEmail();
         this.password = this.ingresarContraseña();
-
-        // Guarda el usuario en el array global
+    
         agregarUsuario(this);
-
-        alert(`✅ Registro exitoso. Bienvenido/a, ${this.nombre}`);
+    
+        alert(
+            "Tu cuenta de banco tiene el número: " + this.account +
+            "\nTipo de identificación: " + this.tipoIdent +
+            "\nNúmero de identificación: " + this.identify +
+            "\nTu usuario es: " + this.nombre +
+            "\nTu correo es: " + this.email +
+            "\nTu contraseña es: " + this.password +
+            "\nEl saldo de la cuenta = $" + this.saldo
+        );
     }
 
     seleccionarTipoIdentificacion() {
@@ -30,7 +39,7 @@ class Registro extends Usuario {
                 case 2: this.tipoIdent = "T.I"; break;
                 case 3: this.tipoIdent = "DNI"; break;
                 default:
-                    alert("⚠️ Opción no válida. Intenta de nuevo.");
+                    alert("Opción no válida. Intenta de nuevo.");
             }
         } while (!this.tipoIdent || confirmarOpcion() !== 1);
     }
@@ -51,7 +60,7 @@ class Registro extends Usuario {
                     repetir = true;
                 }
             } else {
-                alert("⚠️ Identificación no válida.");
+                alert("Identificación no válida.");
                 repetir = true;
             }
         } while (repetir);
@@ -69,7 +78,7 @@ class Registro extends Usuario {
                 alert("Usuario ingresado: " + nombre);
                 if (confirmarOpcion() !== 1) repetir = true;
             } else {
-                alert("⚠️ Campo vacío.");
+                alert("Campo vacío.");
                 repetir = true;
             }
         } while (repetir);
@@ -89,7 +98,7 @@ class Registro extends Usuario {
                 alert("Correo ingresado: " + email);
                 if (confirmarOpcion() !== 1) repetir = true;
             } else {
-                alert("⚠️ Correo no válido.");
+                alert("Correo no válido.");
                 repetir = true;
             }
         } while (repetir);
@@ -113,7 +122,7 @@ class Registro extends Usuario {
                     repetir = true;
                 }
             } else {
-                alert("⚠️ Las contraseñas no coinciden o no tienen 4 dígitos.");
+                alert("Las contraseñas no coinciden o no tienen 4 dígitos.");
                 repetir = true;
             }
         } while (repetir);

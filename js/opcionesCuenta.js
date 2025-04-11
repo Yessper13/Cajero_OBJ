@@ -6,7 +6,7 @@ export function Opciones(usuarioActivo, buscarUsuarioPorNombre) {
         const montoT = parseFloat(prompt("¿Cuánto deseas transferir?"));
         const usuarioDestino = buscarUsuarioPorNombre(destino);
 
-        if (usuarioDestino && usuarioActivo.saldo >= montoT) {
+        if (usuarioDestino && usuarioDestino != usuarioActivo && usuarioActivo.saldo >= montoT) {
             usuarioActivo.saldo -= montoT;
             usuarioDestino.saldo += montoT;
             usuarioActivo.agregarMovimiento(`Transferencia a ${destino} por $${montoT}`);

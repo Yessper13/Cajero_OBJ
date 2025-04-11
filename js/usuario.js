@@ -29,9 +29,15 @@ class Usuario {
 }
 
 const usuariosRegistrados = [];
+let contadorUsuarios = 0;
+
+function obtenerContadorUsuarios() {
+    return contadorUsuarios;
+}
 
 function agregarUsuario(usuario) {
     usuariosRegistrados.push(usuario);
+    contadorUsuarios++;
 }
 
 function obtenerUsuarios() {
@@ -46,4 +52,5 @@ function confirmarOpcion() {
     return parseInt(prompt("¿Desea guardar su respuesta?\n1. Sí\n0. No, repetir"));
 }
 
-export { Usuario, agregarUsuario, obtenerUsuarios, buscarUsuarioPorNombre, confirmarOpcion };
+
+export { Usuario, agregarUsuario, obtenerUsuarios, buscarUsuarioPorNombre, confirmarOpcion, obtenerContadorUsuarios };

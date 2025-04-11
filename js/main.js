@@ -42,7 +42,7 @@ do {
 
         case 2:
             const nuevoRegistro = new Registro("", "", "", [], []);
-            nuevoRegistro.iniciarRegistro();
+            nuevoRegistro.iniciarRegistro();            
             alert(`Usuario registrado con éxito. Bienvenido, ${nuevoRegistro.User}`);
             break;
     }
