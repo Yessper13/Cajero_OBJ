@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero Automatico Inicio sesion</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Iniciar Sesión</h1>
+        <form onsubmit="entrar(event)">
+          <input type="text" id="usuarioLogin" placeholder="Usuario" required class="input" />
+          <input type="password" id="contrasenaLogin" placeholder="Contraseña" required class="input" />
+          <button type="submit" class="btn">Entrar</button>
+        </form>
+        <div class="link">
+            ¿No tienes una cuenta?
+            <a href="Registro.html">Registrate aquí</a>
+          </div>
+      </div>
+      <script src="../js/iniciarSesion.js"></script>
+      <script src="../js/main.js"></script>
+</body>
+</html>

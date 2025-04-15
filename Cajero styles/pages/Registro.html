@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero Automatico</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Registrarse</h1>
+    <form onsubmit="return registrarUsuario()">
+      <div class="id-row">
+        <select id="tipoId" required class="input select">
+          <option value="">Tipo de identificación</option>
+          <option value="TI">T.I</option>
+          <option value="CC">C.C</option>
+          <option value="Pasaporte">Pasaporte</option>
+        </select>
+        <input type="number" id="numeroId" placeholder="Número de identificación" required class="input" />
+      </div>
+
+      <input type="text" id="usuario" placeholder="Usuario" required class="input" />
+      <input type="email" id="correo" placeholder="Correo electrónico" required class="input" />
+      <input type="password" id="contrasena" placeholder="Contraseña" required class="input" />
+      <input type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required class="input" />
+
+      <button type="submit" class="btn">Registrarse</button>
+    </form>
+    <div class="link">
+      ¿Ya tienes una cuenta?
+      <a href="iniciosesion.html">Inicia sesión</a>
+    </div>
+  </div>
+  
+  <script src="../js/registro.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

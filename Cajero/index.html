@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cajero Automático</title>
+  <link rel="stylesheet" href="/Style/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido</h1>
+    <a href="iniciarSesion.html"><button class="btn" id="BtniniciarSesion" onclick="iniciarSesion()">Iniciar sesión</button></a><!-- Boton para ir a la pagina de inicio de sesion -->
+    
+    <button class="btn" id="BtnRegistro" onclick="registrarse()">Registrarse</button>
+    <button class="btn exit" id="BtnSalir" onclick="salir()">Salir</button>
+  </div>
+
+  <script>
+    function iniciarSesion() {
+      alert("Ir a iniciar sesión");
+    }
+
+    function registrarse() {
+      alert("Ir a registrarse");
+    }
+
+    function salir() {
+      alert("Aplicación cerrada");
+    }
+  </script>
+</body>
+</html>
