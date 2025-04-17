@@ -1,10 +1,8 @@
-function entrar(event) {
-  event.preventDefault();
+function entrar() {
+  let usuario = document.getElementById('usuarioLogin').value;
+  let contrasena = document.getElementById('contrasenaLogin').value;
 
-  const usuario = document.getElementById('usuarioLogin').value;
-  const contrasena = document.getElementById('contrasenaLogin').value;
-
-  const usuarioValido = app.verificarCredenciales(usuario, contrasena);
+  let usuarioValido = app.verificarCredenciales(usuario, contrasena);
 
   if (usuarioValido) {
     alert(`¡Bienvenido ${usuarioValido.usuario}!`);
