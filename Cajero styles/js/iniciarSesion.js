@@ -3,11 +3,12 @@ function entrar() {
   let contrasena = document.getElementById('contrasenaLogin').value;
 
   let usuarioValido = app.verificarCredenciales(usuario, contrasena);
-
+  
   if (usuarioValido) {
     alert(`¡Bienvenido ${usuarioValido.usuario}!`);
-    window.location.href = "transacciones.html";
+    window.location.href = ("transacciones.html");//Falta revisar porque no redirecciona
   } else {
     alert("Usuario o contraseña incorrectos.");
   }
+
 }

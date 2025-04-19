@@ -4,11 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cajero Automatico</title>
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/transacciones.css" />
 </head>
 <body>
+    <header class="main-header">
+        <h1>Bienvenido al cajero automático </h1>
+        <p>Su saldo actual es: <span id="saldo-actual">$0.00</span></p>
+      </header>
+    <div class="tabs">
+        <div class="tab active" data-tab="1">Transferencia</div>
+        <div class="tab" data-tab="2">Retiro</div>
+        <div class="tab" data-tab="3">Recarga</div>
+        <div class="tab" data-tab="4">Historial</div>
+      </div>
     
+      <div class="tab-content active" data-content="1">
+        <h2>Transferencia entre cuentas</h2>
+        <form class="transfer-form">
+            <label for="cuenta">Cuenta a transferir</label>
+            <input type="text" id="cuenta" name="cuenta" placeholder="Ej: 1234567890" required>
+        
+            <label for="valor">Valor a transferir</label>
+            <input type="number" id="valor" name="valor" placeholder="Ej: 50000" required>
+        
+            <label for="clave">Contraseña</label>
+            <input type="password" id="clave" name="clave" placeholder="Ingrese su clave" required>
+        
+            <button type="submit">Transferir</button>
+          </form>
+      </div>
+    
+      <div class="tab-content" data-content="2">
+        <h2>Retiro</h2>
+        <p>Este es el contenido de la pestaña Retiro.</p>
+      </div>
+    
+      <div class="tab-content" data-content="3">
+        <h2>Recarga de saldo</h2>
+        <p>Este es el contenido de la pestaña Recarga de saldo.</p>
+      </div>
+
+      <div class="tab-content" data-content="4">
+        <h2>Historial</h2>
+        <p>Este es el contenido de la pestaña Historial.</p>
+      </div>
 
 
+    <script src="/Cajero styles/js/transacciones.js"></script>
     <script src="/Cajero styles/js/main.js"></script>
 </body>
