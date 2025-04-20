@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Iniciar Sesión</h1>
-        <form onsubmit="entrar()"><!-- Funcion ubicada en el archivo iniciarSesion.js -->
+        <form onsubmit="entrar(event)"><!-- Funcion ubicada en el archivo iniciarSesion.js -->
           <input type="text" id="usuarioLogin" placeholder="Usuario" required class="input" />
           <input type="password" id="contrasenaLogin" placeholder="Contraseña" required class="input" />
           <button type="submit" class="btn">Entrar</button>
@@ -19,6 +19,10 @@
             ¿No tienes una cuenta?
             <a href="Registro.html">Registrate aquí</a>
           </div>
+      </div>
+      <div id="loader" style="display: none;">
+        <div class="spinner"></div>
+        <p id="mensajeRedireccion">Hola</p>
       </div>
       <script src="../js/iniciarSesion.js"></script>
       <script src="../js/main.js"></script>

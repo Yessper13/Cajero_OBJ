@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <h1>Registrarse</h1>
-    <form onsubmit="return registrarUsuario()">
+    <form onsubmit="return registrarUsuario(event)">
       <div class="id-row">
         <select id="tipoId" required class="input select">
           <option value="">Tipo de identificación</option>
@@ -35,5 +35,11 @@
   
   <script src="../js/registro.js"></script>
   <script src="../js/main.js"></script>
+  <div id="loader" style="display: none;">
+    <div class="spinner"></div>
+    <p id="mensajeRedireccion">Redirigiendo...</p>
+  </div>
+  
+ 
 </body>
 </html>
