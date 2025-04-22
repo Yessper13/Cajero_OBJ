@@ -1,3 +1,11 @@
+
+const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));// Recupera el usuario activo desde sessionStorage
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];// Recupera todos los usuarios desde localStorage (si no hay, se asigna un arreglo vacío)
+const indice = parseInt(sessionStorage.getItem("indiceUsuarioActivo"));// Recupera el índice del usuario activo
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));
   if (usuarioActivo) {
@@ -26,7 +34,22 @@ tabs.forEach(tab => {
 function cerrarSesion() {
   window.location.href = "index.html"; 
 }
+function Transferencia(event){//Funcion que se ejecuta al hacer una transferencia
+  event.preventDefault();
+    const destino = document.getElementById("cuenta").value;
+    const montoT = Number(document.getElementById("valor").value);
+    const clave = document.getElementById("clave").value;
+    if(clave == usuarioActivo.contrasena){
+      if (destino != usuarioActivo.usuario && usuarioActivo.saldo >= montoT) {
+        let destinoT = usuarios.find(u => u.usuario == destino);
+        usuarioActivo.saldo -= montoT;
+        destinoT.saldo += montoT;
 
+      }
+  }
+}
+
+  
 
 function RecargaSaldo(event) {// Función que se ejecuta al hacer una recarga de saldo
   event.preventDefault(); // Evita que el formulario se envíe y recargue la página
@@ -34,11 +57,7 @@ function RecargaSaldo(event) {// Función que se ejecuta al hacer una recarga de
   const montoRec = parseFloat(montoInput.value);// Convierte el valor del input a número decimal
   
   // Verifica que el monto ingresado sea un número válido y mayor que 0
-  if (!isNaN(montoRec) && montoRec > 0) {
-    
-    let usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));// Recupera el usuario activo desde sessionStorage
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];// Recupera todos los usuarios desde localStorage (si no hay, se asigna un arreglo vacío)
-    let indice = parseInt(sessionStorage.getItem("indiceUsuarioActivo"));// Recupera el índice del usuario activo
+  if (!isNaN(montoRec) && montoRec > 0) {  
     
     if (usuarioActivo && !isNaN(indice)) {// Verifica que exista un usuario activo y un índice válido
       usuarioActivo.saldo += montoRec;// Suma el monto recargado al saldo actual del usuario

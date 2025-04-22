@@ -83,11 +83,13 @@
     display: none;
     background-color: #ffffff;
     min-height: auto;
+    
   }
   
   .tab-content.active {
     display: block;
-    grid-template-columns: ;
+    background-image: url("../Image/Background.png");
+    min-height: 85vh;
   }
   
   /* Estilos internos del contenido */
@@ -109,8 +111,8 @@
 /* ==== Estilo del formulario de transferencia ==== */
 .transfer-form {
     display: flex;
-    flex-direction: column;
-    max-width: 400px;
+    flex-direction: row;
+    max-width: auto;
     gap: 16px;
     margin-top: 20px;
     align-items: center;
@@ -195,8 +197,8 @@
 .caja {
   flex: 1 1 30%;
   min-width: 280px;
-  max-width: 400px;
-  height: 600px;
+  max-width: auto;
+  height: auto;
   background-color: #fff;
   border-radius: 12px;
   padding: 15px;

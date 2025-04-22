@@ -24,21 +24,19 @@
       <div class="tab-content active " data-content="1">
         <h2>Transferencia entre cuentas</h2>
         <div class="caja">
-          <form class="transfer-form" onsubmit="">
-            <label for="cuenta">Cuenta a transferir</label>
+          <form class="transfer-form" onsubmit="Transferencia(event);">
+            <label for="cuenta">Cuenta a transferir:</label>
             <input type="text" id="cuenta" name="cuenta" placeholder="Ej: 1234567890" required>
         
-            <label for="valor">Valor a transferir</label>
+            <label for="valor">Valor a transferir:</label>
             <input type="number" id="valor" name="valor" placeholder="Ej: 50000" required>
         
-            <label for="clave">Contraseña</label>
+            <label for="clave">Contraseña:</label>
             <input type="password" id="clave" name="clave" placeholder="Ingrese su clave" required>
         
             <button type="submit">Transferir</button>
           </form>
-          
         </div>
-        <img src="../Image/Transacciones.png" alt="Imagen con alusion a transacciones">
       </div>
     
       <div class="tab-content" data-content="2">
