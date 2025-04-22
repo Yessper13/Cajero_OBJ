@@ -11,7 +11,7 @@
     background-color: #f9f9f9;
     color: #1c1c1e;
     display: flex;
-    height: 100vh;
+    height: auto;
     padding-top: 100px; /* Espacio para el header */
   }
   
@@ -49,6 +49,7 @@
     border-right: 1px solid #e0e0e0;
     box-shadow: 2px 0 5px rgba(0,0,0,0.05);
     padding-top: 20px;
+    height: auto;
   }
   
   /* Pestañas individuales */
@@ -81,10 +82,12 @@
     padding: 40px;
     display: none;
     background-color: #ffffff;
+    min-height: auto;
   }
   
   .tab-content.active {
     display: block;
+    grid-template-columns: ;
   }
   
   /* Estilos internos del contenido */

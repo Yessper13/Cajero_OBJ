@@ -10,9 +10,9 @@
     <header class="main-header">
       <h1>Bienvenido al cajero automático </h1>
       <p>Su saldo actual es: <span id="saldo-actual">$0.00</span></p>
-  </header>
+    </header>
     <div>
-      <div class="tabs" style="height: 90%;">
+      <div class="tabs" style="height: auto;">
         <div class="tab active" data-tab="1">Transferencia</div>
         <div class="tab" data-tab="2">Retiro</div>
         <div class="tab" data-tab="3">Recarga</div>
@@ -24,7 +24,7 @@
       <div class="tab-content active " data-content="1">
         <h2>Transferencia entre cuentas</h2>
         <div class="caja">
-          <form class="transfer-form">
+          <form class="transfer-form" onsubmit="">
             <label for="cuenta">Cuenta a transferir</label>
             <input type="text" id="cuenta" name="cuenta" placeholder="Ej: 1234567890" required>
         
@@ -36,8 +36,9 @@
         
             <button type="submit">Transferir</button>
           </form>
+          
         </div>
-        
+        <img src="../Image/Transacciones.png" alt="Imagen con alusion a transacciones">
       </div>
     
       <div class="tab-content" data-content="2">
