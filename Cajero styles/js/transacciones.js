@@ -45,6 +45,19 @@ function Transferencia(event){//Funcion que se ejecuta al hacer una transferenci
         usuarioActivo.saldo -= montoT;
         destinoT.saldo += montoT;
 
+        //actualizar saldos en el local storange
+
+        if (!usuarioActivo.historial) usuarioActivo.historial = [];// Inicializa el historial si no existe
+          usuarioActivo.historial.push(`Transferencia de $${montoT.toFixed(2)} el ${fechaHora}`);// Agrega una entrada al historial con el monto y la fecha de la recarga, se agrega toFixet para agregar 2 decimales
+          usuarios[indice] = usuarioActivo;// Actualiza el usuario en la lista de usuarios
+          localStorage.setItem("usuarios", JSON.stringify(usuarios));// Guarda la lista actualizada en localStorage
+          sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));// Actualiza también el usuario activo en sessionStorage
+          document.getElementById("saldo-actual").textContent = `$${usuarioActivo.saldo.toFixed(2)}`;// Actualiza el saldo en la interfaz del usuario
+      
+      montoRec.value = ""; // Limpia el campo de monto
+      alert("Saldo recargado");// Muestra mensaje de éxito
+        console.log(destinoT.saldo + destinoT.usuario)
+
       }
   }
 }
@@ -53,26 +66,23 @@ function Transferencia(event){//Funcion que se ejecuta al hacer una transferenci
 
 function RecargaSaldo(event) {// Función que se ejecuta al hacer una recarga de saldo
   event.preventDefault(); // Evita que el formulario se envíe y recargue la página
-  const montoInput = document.getElementById("montoRecarga");// Obtiene el input donde se ingresa el monto a recargar
-  const montoRec = parseFloat(montoInput.value);// Convierte el valor del input a número decimal
+  const montoRec = parseFloat(document.getElementById("montoRecarga").value);// Obtiene el input donde se ingresa el monto a recargar y se comvierte a decimal
   
-  // Verifica que el monto ingresado sea un número válido y mayor que 0
-  if (!isNaN(montoRec) && montoRec > 0) {  
+  if (!isNaN(montoRec) && montoRec > 0) {// Verifica que el monto ingresado sea un número válido y mayor que 0
     
     if (usuarioActivo && !isNaN(indice)) {// Verifica que exista un usuario activo y un índice válido
       usuarioActivo.saldo += montoRec;// Suma el monto recargado al saldo actual del usuario
-
       const ahora = new Date();// Obtiene la fecha y hora actual en formato local legible
       const fechaHora = ahora.toLocaleString();
-      
+
       if (!usuarioActivo.historial) usuarioActivo.historial = [];// Inicializa el historial si no existe
-      usuarioActivo.historial.push(`Recarga de $${montoRec.toFixed(2)} el ${fechaHora}`);// Agrega una entrada al historial con el monto y la fecha de la recarga
+      usuarioActivo.historial.push(`Recarga de $${montoRec.toFixed(2)} el ${fechaHora}`);// Agrega una entrada al historial con el monto y la fecha de la recarga, se agrega toFixet para agregar 2 decimales
       usuarios[indice] = usuarioActivo;// Actualiza el usuario en la lista de usuarios
       localStorage.setItem("usuarios", JSON.stringify(usuarios));// Guarda la lista actualizada en localStorage
       sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));// Actualiza también el usuario activo en sessionStorage
       document.getElementById("saldo-actual").textContent = `$${usuarioActivo.saldo.toFixed(2)}`;// Actualiza el saldo en la interfaz del usuario
-     
-      montoInput.value = ""; // Limpia el campo de monto
+      
+      montoRec.value = ""; // Limpia el campo de monto
       alert("Saldo recargado");// Muestra mensaje de éxito
     } else {
       alert("Error: sesión no válida.");// Muestra mensaje de error si no hay sesión válida
