@@ -113,6 +113,33 @@ function RecargaSaldo(event) {// Función que se ejecuta al hacer una recarga de
     alert("Por favor, ingresa un monto válido.");// Muestra mensaje si el monto no es válido
   }
   document.getElementById("montoRecarga").value = "";
+  location.reload();
+}
+
+function Retirar(event){
+  event.preventDefault();
+  const montoRet = parseFloat(document.getElementById("montoRetiro").value)//Obtengo el input donde se ingresa el monto a retirar
+  if (!isNaN(montoRet) && montoRet > 0 && montoRet % 10000===0  && usuarioActivo.saldo>=montoRet){
+    if (usuarioActivo && !isNaN(indice)) {// Verifica que exista un usuario activo y un índice válido
+      usuarioActivo.saldo -= montoRet;// Sustrae el monto retirado al saldo actual del usuario
+      if (!usuarioActivo.historial) usuarioActivo.historial = [];// Inicializa el historial si no existe
+      usuarioActivo.historial.push(`Retiro de $${montoRet.toFixed(2)} el ${fechaHora}`);// Agrega una entrada al historial con el monto y la fecha de la recarga, se agrega toFixet para agregar 2 decimales
+      usuarios[indice] = usuarioActivo;// Actualiza el usuario en la lista de usuarios
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));// Guarda la lista actualizada en localStorage
+      sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));// Actualiza también el usuario activo en sessionStorage
+      document.getElementById("saldo-actual").textContent = `$${usuarioActivo.saldo.toFixed(2)}`;// Actualiza el saldo en la interfaz del usuario
+      
+      montoRet.textContent = ""; // L = ""; // Limpia el campo de monto
+      location.reload();
+      alert("Saldo retirado");// Muestra mensaje de éxito
+    } else {
+      alert("Error: sesión no válida.");// Muestra mensaje de error si no hay sesión válida
+    }
+  } else {
+    alert("Por favor, ingresa un monto válido.");// Muestra mensaje si el monto no es válido
+  }
+  document.getElementById("montoRecarga").value = "";
+ 
 }
 
 
