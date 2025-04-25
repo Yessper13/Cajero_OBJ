@@ -25,7 +25,8 @@ class Main {//Clase donde se almacenará los objetos y los métodos
     mostrarUsuarios() {//Metodo para ver en consola los usuarios registrados
       console.log("Usuarios registrados:", this.usuarios);
     }
+    
   }
   
   let app = new Main();// Se instancia la clase y se le asigna a la variable app que nos permite ejecutar sus metodos
-  
+ 
