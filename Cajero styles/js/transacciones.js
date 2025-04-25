@@ -5,9 +5,9 @@ const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];// Recupera 
 const indice = parseInt(sessionStorage.getItem("indiceUsuarioActivo"));// Recupera el índice del usuario activo
 const ahora = new Date();// Obtiene la fecha y hora actual en formato local legible
 const fechaHora = ahora.toLocaleString();
-
 document.getElementById("saldo-actual").textContent = `$${usuarios[indice].saldo.toFixed(2)}`;
 document.getElementById("nombre-cliente").textContent = `Bienvenido, ${nombreUsuario}`;
+
 
 const tabs = document.querySelectorAll('.tab');
 const contents = document.querySelectorAll('.tab-content');
@@ -162,5 +162,6 @@ function HistorialMovimientos() {
     li.textContent = "No hay movimientos registrados.";
     listaHistorial.appendChild(li);
   }
+  return true;
 }
 
