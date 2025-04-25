@@ -17,7 +17,7 @@ function entrar(event) {
 
     document.getElementById("loader").style.display = "flex";
     document.getElementById("mensajeRedireccion").textContent =
-      `Hola, ${usuarioValido.usuario} Bienvenid@ a nuestro cajero.`;
+      `Hola ${usuarioValido.usuario}, Bienvenid@ a nuestro cajero.`;
 
     setTimeout(() => {
       window.location.href = "transacciones.html";

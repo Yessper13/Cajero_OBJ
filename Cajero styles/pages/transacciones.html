@@ -10,6 +10,7 @@
     <header class="main-header">
       <h1>Bienvenido al cajero automático </h1>
       <p>Su saldo actual es: <span id="saldo-actual">$0.00</span></p>
+      <p> <span id="nombre-cliente"> </span></p>
     </header>
     <div>
       <div class="tabs" style="height: auto;">
@@ -44,8 +45,6 @@
         <p>Este es el contenido de la pestaña Retiro.</p>
       </div>
 
-
-    
       <div class="tab-content" data-content="3">
         <h2>Recarga de Saldo</h2>
         <form class="transfer-form" onsubmit="RecargaSaldo(event)">
@@ -54,24 +53,13 @@
             <button type="submit">Recargar</button>
         </form>
       </div>
+
       <div class="tab-content" data-content="4">
         <h2>Historial</h2>
         <div class="historial-container">
           <div class="caja historial-caja">
-            <h3>Recargas</h3>
+            <h3>Movimientos</h3>
             <ul id="lista-historial" class="scrollable-content"></ul>
-          </div>
-          <div class="caja historial-caja">
-            <h3>Transferencias</h3>
-            <div class="scrollable-content">
-              <!-- Contenido de transferencias -->
-            </div>
-          </div>
-          <div class="caja historial-caja">
-            <h3>Retiros</h3>
-            <div class="scrollable-content">
-              <!-- Contenido de retiros -->
-            </div>
           </div>
         </div>
       </div>

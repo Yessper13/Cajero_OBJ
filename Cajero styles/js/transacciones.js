@@ -1,18 +1,15 @@
 
 const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));// Recupera el usuario activo desde sessionStorage
+const nombreUsuario = usuarioActivo.usuario;// Recupera el nombre de usuario del usuario activo
 const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];// Recupera todos los usuarios desde localStorage (si no hay, se asigna un arreglo vacío)
 const indice = parseInt(sessionStorage.getItem("indiceUsuarioActivo"));// Recupera el índice del usuario activo
 const ahora = new Date();// Obtiene la fecha y hora actual en formato local legible
 const fechaHora = ahora.toLocaleString();
 
+document.getElementById("saldo-actual").textContent = `$${usuarios[indice].saldo.toFixed(2)}`;
+document.getElementById("nombre-cliente").textContent = `Bienvenido, ${nombreUsuario}`;
 
 
-document.addEventListener("DOMContentLoaded", () =>{
-  const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));
-  if (usuarioActivo) {
-    document.getElementById("saldo-actual").textContent = `$${usuarioActivo.saldo.toFixed(2)}`;
-  }
-});
 
 const tabs = document.querySelectorAll('.tab');
 const contents = document.querySelectorAll('.tab-content');
@@ -35,29 +32,32 @@ tabs.forEach(tab => {
 function cerrarSesion() {
   window.location.href = "index.html"; 
 }
+
 function Transferencia(event){//Funcion que se ejecuta al hacer una transferencia
   event.preventDefault();
     const destino = document.getElementById("cuenta").value;
     const montoT = Number(document.getElementById("valor").value);
     const clave = document.getElementById("clave").value;
-    if (clave !== usuarioActivo.contrasena) return;
+    if (clave !== usuarioActivo.contrasena){
+        alert("La clave ingresada es incorrecta.");
+      return;} 
 
-  if (destino === usuarioActivo.usuario) {
-    alert("No puedes transferirte a ti mismo.");
-    return;
-  }
-
-  if (isNaN(montoT) || montoT <= 0) {
-    alert("Monto inválido.");
-    return;
-  }
-
-  if (usuarioActivo.saldo < montoT) {
-    alert("Saldo insuficiente.");
-    return;
-  }
+    if (destino === usuarioActivo.usuario) {
+      alert("No puedes transferirte a ti mismo.");
+      return;
+    }
+  
+    if (isNaN(montoT) || montoT <= 0) {
+      alert("Monto inválido.");
+      return;
+    }
+  
+    if (usuarioActivo.saldo < montoT) {
+      alert("Saldo insuficiente.");
+      return;
+    }
     if(clave == usuarioActivo.contrasena){
-      
+      alert("La clave es correcta");
       if (destino != usuarioActivo.usuario && usuarioActivo.saldo >= montoT) {
         alert(destino)
         
@@ -66,11 +66,14 @@ function Transferencia(event){//Funcion que se ejecuta al hacer una transferenci
           alert("El usuario destino no existe.");
           return;
         }
+        if (!usuarioActivo.historial) usuarioActivo.historial = [];// Inicializa el historial si no existe
+        usuarioActivo.historial.push(`Transferencia de $${montoT.toFixed(2)} el ${fechaHora} a la cuenta ${usuarios[destinoIndex].usuario}`);// Agrega una entrada al historial con el monto y la fecha de la recarga, se agrega toFixet para agregar 2 decimales
         usuarios[indice].saldo -= montoT;
         sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));// Actualiza también el usuario activo en sessionStorage
         document.getElementById("saldo-actual").textContent = `$${usuarios[indice].saldo.toFixed(2)}`;// Actualiza el saldo en la interfaz del usuario
         usuarios[destinoIndex].saldo += montoT;
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));// Guarda la lista actualizada en localStorage
+        localStorage.setItem("usuarios", JSON.stringify(usuarios));// Guarda la lista actualizada en localStorage\
+        sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));// Actualiza también el usuario activo en sessionStorage
         usuarioActivo.historial.push(`Transferencia de $${montoT.toFixed(2)} el ${fechaHora}`);// Agrega una entrada al historial con el monto y la fecha de la recarga, se agrega toFixet para agregar 2 decimales
      
         document.getElementById("valor").value = "";
@@ -78,7 +81,7 @@ function Transferencia(event){//Funcion que se ejecuta al hacer una transferenci
         document.getElementById("cuenta").value = "";
         
       alert("Transferencia realizada");// Muestra mensaje de éxito
-
+      event.preventDefault();
       }
   }
 }
@@ -111,6 +114,7 @@ function RecargaSaldo(event) {// Función que se ejecuta al hacer una recarga de
   } else {
     alert("Por favor, ingresa un monto válido.");// Muestra mensaje si el monto no es válido
   }
+  document.getElementById("montoRecarga").value = "";
 }
 
 
@@ -134,3 +138,4 @@ function HistorialMovimientos() {
     listaHistorial.appendChild(li);
   }
 }
+
