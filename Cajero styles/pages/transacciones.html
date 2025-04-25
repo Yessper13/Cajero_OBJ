@@ -13,9 +13,8 @@
       <p>Su saldo actual es: <span id="saldo-actual">$0.00</span></p>
       <p> <span id="nombre-cliente"> </span></p>
     </div>
-    <div class="right-header">
-        <a href=""></a>
-      <img src="../Image/perfil.png" alt="perfil" class="perfil-icon">
+    <div class="right-header" class="tab" data-tab="5">
+      <a href="#" onclick="cargarPerfil()"><img src="../Image/perfil.png" alt="perfil" class="perfil-icon"></a>
     </div>
     </header>
     <div>
@@ -24,7 +23,9 @@
         <div class="tab" data-tab="2">Retiro</div>
         <div class="tab" data-tab="3">Recarga</div>
         <div class="tab" data-tab="4" onclick="HistorialMovimientos()">Historial</div>
+        <!-- <div class="tab" data-tab="5"></div> -->
       </div>
+      
       <div class="botton-cerrar"><button class="cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button></div>
     </div>
     
@@ -71,10 +72,36 @@
           </div>
         </div>
       </div>
-    
+      <div id="perfil" style="display: none;" class="tab-content" data-content="5">
+        
+        <div class="transfer-form caja perfil-info">
+          <h3>Perfil</h3>
+          <label for="cuenta">Cuenta:</label>
+          <input type="text" id="cuenta-perfil" readonly>
+      
+          <label for="identificacion">Número de Identificación:</label>
+          <input type="text" id="identificacion-perfil" readonly>
+      
+          <label for="correo">Correo:</label>
+          <input type="email" id="correo-perfil" readonly>
+      
+          <h3>Cambiar Contraseña</h3>
+          <label for="nuevaClave">Nueva Contraseña:</label>
+          <input type="password" id="nuevaClave" placeholder="Nueva contraseña">
+      
+          <label for="confirmarClave">Confirmar Contraseña:</label>
+          <input type="password" id="confirmarClave" placeholder="Confirmar contraseña">
+      
+          <button type="button" onclick="actualizarContrasena()">Actualizar Contraseña</button>
+          <button type="button" onclick="cerrar()">Cerrar</button>
+        </div>
+      </div>
+      
 
     <script src="/Cajero styles/js/transacciones.js"></script>
     <script src="/Cajero styles/js/main.js"></script>
+
+      
 
   </body>
 </html>

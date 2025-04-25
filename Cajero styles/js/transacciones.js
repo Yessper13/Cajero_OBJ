@@ -136,4 +136,77 @@ function HistorialMovimientos() {
     listaHistorial.appendChild(li);
   }
 }
+function mostrarDiv() {
+  var div = document.querySelector('div[data-content="5"]');
+  if (div) {
+    div.style.display = "block";
+  }
+}
+function cerrar() {
+  var div = document.querySelector('div[data-content="5"]');
+  if (div) {
+    div.style.display = "none";
+  }
+}
 
+function cargarPerfil() {
+  mostrarDiv()
+  const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));
+
+  if (usuarioActivo) {
+    document.getElementById("cuenta-perfil").value = usuarioActivo.usuario || '';
+    document.getElementById("identificacion-perfil").value = `${usuarioActivo.tipoId}: ${usuarioActivo.numeroId}`;
+    document.getElementById("correo-perfil").value = usuarioActivo.correo || '';
+  } else {
+    alert("No se pudo cargar la información del perfil.");
+  }
+  
+}
+
+function actualizarContrasena() {
+  alert("Actualizando contraseña..."); // Mensaje de alerta para indicar que se está actualizando la contraseña
+  const nuevaClave = document.getElementById("nuevaClave").value.trim();
+  const confirmarClave = document.getElementById("confirmarClave").value.trim();
+
+  if (!nuevaClave || !confirmarClave) {
+    alert("Por favor, completa ambos campos de contraseña.");
+    return;
+  }
+
+  if (nuevaClave !== confirmarClave) {
+    alert("Las contraseñas no coinciden. Inténtalo de nuevo.");
+    return;
+  }
+
+  if (usuarioActivo) {
+    usuarios[indice].contrasena = nuevaClave; // Simulando el cambio de contraseña
+    localStorage.setItem("usuarios", JSON.stringify(usuarios)); // Guardando el nuevo usuario en localStorage
+    
+    alert("Contraseña actualizada exitosamente.");
+    
+    // Limpiar los campos
+    document.getElementById("nuevaClave").value = "";
+    document.getElementById("confirmarClave").value = "";
+  } else {
+    alert("No se encontró usuario activo.");
+  }
+  console.log(usuarios[indice].contrasena);
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+    tab.classList.add('active');
+    const tabNum = tab.getAttribute('data-tab');
+    const content = document.querySelector(`.tab-content[data-content="${tabNum}"]`);
+    content.classList.add('active');
+
+    if (tabNum === "4") {
+      HistorialMovimientos();
+    } else if (tabNum === "5") {
+      cargarPerfil();
+    }
+  });
+});
