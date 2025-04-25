@@ -189,14 +189,15 @@
 }
 
 .historial-container {
-  display: flex;
+  display: block;
   gap: 20px;
   justify-content: center;
   align-items: stretch;
   flex-wrap: wrap;
+  margin-top: 3px;
 }
 
-.caja {
+.caja, .cajaH {
   flex: 1 1 30%;
   min-width: 280px;
   max-width: auto;
@@ -209,7 +210,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-top: 2px;
 }
+
 
 .caja h3 {
   margin: 0 0 10px;
@@ -223,13 +226,16 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   background: #f1f1f1;
 }
+.cajaH:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
 
 .scrollable-content,
 #lista-historial {
   flex: 1;
   overflow-y: auto;
   padding-right: 5px;
-  text-align: left;
+  text-align: center;
 }
 
 .scrollable-content::-webkit-scrollbar,

@@ -9,8 +9,6 @@ const fechaHora = ahora.toLocaleString();
 document.getElementById("saldo-actual").textContent = `$${usuarios[indice].saldo.toFixed(2)}`;
 document.getElementById("nombre-cliente").textContent = `Bienvenido, ${nombreUsuario}`;
 
-
-
 const tabs = document.querySelectorAll('.tab');
 const contents = document.querySelectorAll('.tab-content');
 
@@ -57,17 +55,16 @@ function Transferencia(event){//Funcion que se ejecuta al hacer una transferenci
       return;
     }
     if(clave == usuarioActivo.contrasena){
-      alert("La clave es correcta");
       if (destino != usuarioActivo.usuario && usuarioActivo.saldo >= montoT) {
-        alert(destino)
-        
         let destinoIndex = usuarios.findIndex(u => u.usuario == destino);
         if (destinoIndex === -1) {
           alert("El usuario destino no existe.");
           return;
         }
         if (!usuarioActivo.historial) usuarioActivo.historial = [];// Inicializa el historial si no existe
-        usuarioActivo.historial.push(`Transferencia de $${montoT.toFixed(2)} el ${fechaHora} a la cuenta ${usuarios[destinoIndex].usuario}`);// Agrega una entrada al historial con el monto y la fecha de la recarga, se agrega toFixet para agregar 2 decimales
+        if (!usuarios[destinoIndex].historial) usuarios[destinoIndex].historial = [];// Inicializa el historial en la cuenta destino si no existe
+        usuarioActivo.historial.push(`Transferencia de $${montoT.toFixed(2)} el ${fechaHora} a la cuenta ${usuarios[destinoIndex].usuario}`);// Agrega una entrada al historial con el monto y la fecha de la transferencia, se agrega toFixet para agregar 2 decimales
+        usuarios[destinoIndex].historial.push(`Recibiste una transferencia de $${montoT.toFixed(2)} el ${fechaHora} desde la cuenta ${usuarios[indice].usuario}`);// Agrega una entrada al historial con el monto y la fecha de la recepcion de la transferencia, se agrega toFixet para agregar 2 decimales
         usuarios[indice].saldo -= montoT;
         sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));// Actualiza también el usuario activo en sessionStorage
         document.getElementById("saldo-actual").textContent = `$${usuarios[indice].saldo.toFixed(2)}`;// Actualiza el saldo en la interfaz del usuario
@@ -81,7 +78,8 @@ function Transferencia(event){//Funcion que se ejecuta al hacer una transferenci
         document.getElementById("cuenta").value = "";
         
       alert("Transferencia realizada");// Muestra mensaje de éxito
-      event.preventDefault();
+      location.reload();
+
       }
   }
 }
