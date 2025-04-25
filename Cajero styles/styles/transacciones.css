@@ -17,6 +17,8 @@
   
   /* ===== Header superior ===== */
   .main-header {
+    gap: 60px;
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -244,4 +246,24 @@
 .scrollable-content::-webkit-scrollbar-track,
 #lista-historial::-webkit-scrollbar-track {
   background-color: transparent;
+}
+.left-header {
+  width: 90%;
+  }
+.right-header {
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.perfil-icon{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Color del icono */
+  font-size: 20px; /* Tamaño del icono */
+  font-weight: bold; /* Grosor del icono */
 }
