@@ -19,10 +19,10 @@
     </header>
     <div>
       <div class="tabs" style="height: auto;">
-        <div class="tab active" data-tab="1">Transferencia</div>
-        <div class="tab" data-tab="2">Retiro</div>
-        <div class="tab" data-tab="3">Recarga</div>
-        <div class="tab" data-tab="4" onclick="HistorialMovimientos()">Historial</div>
+        <div class="tab active" data-tab="1" onclick="cerrar()">Transferencia</div>
+        <div class="tab" data-tab="2" onclick="cerrar()">Retiro</div>
+        <div class="tab" data-tab="3" onclick="cerrar()">Recarga</div>
+        <div class="tab" data-tab="4" onclick="HistorialMovimientos(),cerrar()">Historial</div>
         <!-- <div class="tab" data-tab="5"></div> -->
       </div>
       
@@ -32,7 +32,7 @@
       <div class="tab-content active " data-content="1">
         <div class="caja">
           <h2>Transferencia entre cuentas</h2>
-          <form class="transfer-form" onsubmit="Transferencia(event);">
+          <form class="transfer-form center-form" onsubmit="Transferencia(event);">
             <label for="cuenta">Cuenta a transferir:</label>
             <input type="text" id="cuenta" name="cuenta" placeholder="Ej: 1234567890" required>
         
@@ -81,9 +81,9 @@
           </div>
         </div>
       </div>
-      <div id="perfil" style="display: none;" class="tab-content" data-content="5">
+      <div id="perfil" style="display: none;" class="tab-content1" data-content="5">
         
-        <div class="transfer-form caja perfil-info">
+        <div class="transfer-form caja perfil">
           <h3>Perfil</h3>
           <label for="cuenta">Cuenta:</label>
           <input type="text" id="cuenta-perfil" readonly>
@@ -93,16 +93,32 @@
       
           <label for="correo">Correo:</label>
           <input type="email" id="correo-perfil" readonly>
-      
-          <h3>Cambiar Contraseña</h3>
-          <label for="nuevaClave">Nueva Contraseña:</label>
-          <input type="password" id="nuevaClave" placeholder="Nueva contraseña">
-      
-          <label for="confirmarClave">Confirmar Contraseña:</label>
-          <input type="password" id="confirmarClave" placeholder="Confirmar contraseña">
-      
-          <button type="button" onclick="actualizarContrasena()">Actualizar Contraseña</button>
-          <button type="button" onclick="cerrar()">Cerrar</button>
+          <div class="cambiar-contrasena">
+            <hr>
+            <h4>Cambiar Contraseña</h4>
+            <label for="nuevaClave"></label>
+            <div class="ver-clave">
+              <input type="password" id="nuevaClave" placeholder="Nueva contraseña">
+              <span class="visualizar-psw" onclick="togglePassword('nuevaClave', this)"><img src="../Image/ojo.png" alt=""></span>
+            </div>
+            
+            <label for="confirmarClave"></label>
+            <div class="ver-clave">
+              <input type="password" id="confirmarClave" placeholder="Confirmar contraseña">
+              <span class="visualizar-psw" onclick="togglePassword('confirmarClave')"><img src="../Image/ojo.png" alt=""></span>
+            </div>
+          </div>
+          
+          <div id="caja-botones">
+           <div class="boton-cambioC">
+            <button id="botton-perfil" type="button" onclick="mostrar_div_contrasena()">Cambiar Contraseña</button>
+           </div>
+           
+           <div class="boton-continuar">
+             <a href="#" onclick="actualizarContrasena()"><img src="../Image/flecha.png" alt="Continuar"></a>
+           </div>
+            <button id="botton-perfil" type="button" onclick="cerrar()">Cerrar</button>
+          </div>
         </div>
       </div>
       

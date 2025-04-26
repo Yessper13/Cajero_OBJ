@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cajero Automatico Inicio sesion</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/transacciones.css">
     <link rel="stylesheet" href="../pages/transacciones.html">
 </head>
 <body>
@@ -12,7 +13,12 @@
         <h1>Iniciar Sesión</h1>
         <form onsubmit="entrar(event)"><!-- Funcion ubicada en el archivo iniciarSesion.js -->
           <input type="text" id="usuarioLogin" placeholder="Usuario" required class="input" />
-          <input type="password" id="contrasenaLogin" placeholder="Contraseña" required class="input" />
+          <div class="ver-clave">
+            <input type="password" id="contrasenaLogin" placeholder="Contraseña" required class="input" />
+            <span class="visualizar-psw" onclick="togglePassword('contrasenaLogin')">
+              <img src="../Image/ojo.png" alt="Ver contraseña">
+            </span>
+          </div>
           <button type="submit" class="btn">Entrar</button>
         </form>
         <div class="link">
@@ -24,6 +30,7 @@
         <div class="spinner"></div>
         <p id="mensajeRedireccion">Hola</p>
       </div>
+      <script src="../js/transacciones.js"></script>
       <script src="../js/iniciarSesion.js"></script>
       <script src="../js/main.js"></script>
 </body>

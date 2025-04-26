@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cajero Automatico</title>
     <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/transacciones.css" />
 </head>
 <body>
   <div class="container">
@@ -22,9 +23,19 @@
 
       <input type="text" id="usuario" placeholder="Usuario" required class="input" />
       <input type="email" id="correo" placeholder="Correo electrónico" required class="input" />
-      <input type="password" id="contrasena" placeholder="Contraseña" required class="input" />
-      <input type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required class="input" />
 
+      <div class="ver-clave">
+        <input type="password" id="contrasena" placeholder="Contraseña" required class="input" />
+        <span class="visualizar-psw" onclick="togglePassword('contrasena')">
+          <img src="../Image/ojo.png" alt="Ver contraseña">
+        </span>
+      </div>
+      <div class="ver-clave">
+        <input type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required class="input" />
+        <span class="visualizar-psw" onclick="togglePassword('confirmarContrasena')">
+          <img src="../Image/ojo.png" alt="Ver contraseña">
+        </span>
+      </div>
       <button type="submit" class="btn">Registrarse</button>
     </form>
     <div class="link">
@@ -32,7 +43,7 @@
       <a href="iniciosesion.html">Inicia sesión</a>
     </div>
   </div>
-  
+  <script src="../js/transacciones.js"></script>
   <script src="../js/registro.js"></script>
   <script src="../js/main.js"></script>
   <div id="loader" style="display: none;">

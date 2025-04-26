@@ -284,13 +284,101 @@
   display: flex;
 }
 
-.perfil-icon{
+.perfil-icon {
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; /* Color del icono */
-  font-size: 20px; /* Tamaño del icono */
-  font-weight: bold; /* Grosor del icono */
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.perfil {
+  padding: 80px 0;
+  max-width: 35vh;
+  min-height: 85vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cambiar-contrasena {
+  width: 70%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cambiar-contrasena h4 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.cambiar-contrasena input {
+  margin: 10px 0;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ver-clave {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.ver-clave input {
+  width: 100%;
+  padding-right: 40px; /* Espacio para el ícono */
+}
+
+.visualizar-psw {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.visualizar-psw img {
+  width: 22px;
+  height: 22px;
+}
+
+.boton-continuar img {
+  width: 40px;
+  height: 40px;
+}
+
+#caja-botones {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#botton-perfil {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#botton-perfil:hover {
+  background-color: #0056b3;
 }

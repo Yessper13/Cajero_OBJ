@@ -164,35 +164,39 @@ function HistorialMovimientos() {
   }
   return true;
 }
-function mostrarDiv() {
-  var div = document.querySelector('div[data-content="5"]');
-  if (div) {
-    div.style.display = "block";
-  }
-}
-function cerrar() {
-  var div = document.querySelector('div[data-content="5"]');
-  if (div) {
-    div.style.display = "none";
-  }
-}
-
 function cargarPerfil() {
-  mostrarDiv()
-  const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));
+  mostrarDiv(); // Muestra el div del perfil y oculta/activa botones relacionados con contraseña
+  const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo")); // Obtiene y parsea el objeto 'usuarioActivo' del sessionStorage
 
   if (usuarioActivo) {
-    document.getElementById("cuenta-perfil").value = usuarioActivo.usuario || '';
-    document.getElementById("identificacion-perfil").value = `${usuarioActivo.tipoId}: ${usuarioActivo.numeroId}`;
-    document.getElementById("correo-perfil").value = usuarioActivo.correo || '';
+    document.getElementById("cuenta-perfil").value = usuarioActivo.usuario || ''; // Asigna el nombre de usuario al input 'cuenta-perfil'
+    document.getElementById("identificacion-perfil").value = `${usuarioActivo.tipoId}: ${usuarioActivo.numeroId}`; // Muestra el tipo y número de identificación
+    document.getElementById("correo-perfil").value = usuarioActivo.correo || ''; // Asigna el correo al input 'correo-perfil'
   } else {
-    alert("No se pudo cargar la información del perfil.");
+    alert("No se pudo cargar la información del perfil."); // Muestra alerta si no hay datos del perfil
   }
-  
+}
+
+function mostrarDiv() {
+  var div = document.querySelector('div[data-content="5"]').style.display = "block"; // Muestra el div de perfil (data-content="5")
+  document.querySelector(".cambiar-contrasena").style.display = "none"; // Oculta el div donde se encuentra el campo para cambiar la contraseña
+  document.querySelector(".boton-cambioC").style.display = "block"; // Muestra el botón de cambiar contraseña, al dar clic, va a mostrar el campo para cambiar la contraseña
+  document.querySelector(".boton-continuar").style.display = "none"; // Oculta el botón de continuar
+}
+
+function cerrar() {
+  var div = document.querySelector('div[data-content="5"]').style.display = "none"; // Oculta el div de perfil (data-content="5")
+  document.querySelector(".cambiar-contrasena").style.display = "none"; // Oculta la sección para cambiar la contraseña
+}
+
+function mostrar_div_contrasena() {
+  document.querySelector(".cambiar-contrasena").style.display = "block"; // Muestra el campo para cambiar la contraseña
+  document.querySelector(".boton-cambioC").style.display = "none"; // Oculta el botón de cambiar contraseña
+  document.querySelector(".boton-continuar").style.display = "block"; // Muestra el botón de continuar el cual ejecuta actualizarContrasena()
 }
 
 function actualizarContrasena() {
-  alert("Actualizando contraseña..."); // Mensaje de alerta para indicar que se está actualizando la contraseña
+  
   const nuevaClave = document.getElementById("nuevaClave").value.trim();
   const confirmarClave = document.getElementById("confirmarClave").value.trim();
 
@@ -220,7 +224,11 @@ function actualizarContrasena() {
   }
   console.log(usuarios[indice].contrasena);
 }
-
+//ver la contraseña escrita en elos input de la contraseña
+function togglePassword(id) {
+  const input = document.getElementById(id);
+  input.type = input.type === "password" ? "text" : "password";
+}
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
