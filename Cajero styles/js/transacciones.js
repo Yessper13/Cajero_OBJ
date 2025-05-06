@@ -1,9 +1,11 @@
+// Recupera el usuario activo del sessionStorage
+const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo")); // Obtiene el usuario activo del sessionStorage
 
-const usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"));// Recupera el usuario activo desde sessionStorage
-const nombreUsuario = usuarioActivo.usuario;// Recupera el nombre de usuario del usuario activo
-const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];// Recupera todos los usuarios desde localStorage (si no hay, se asigna un arreglo vacío)
-const indice = parseInt(sessionStorage.getItem("indiceUsuarioActivo"));// Recupera el índice del usuario activo
-const ahora = new Date();// Obtiene la fecha y hora actual en formato local legible
+// Si el usuario activo existe, procedemos con el resto del código
+const nombreUsuario = usuarioActivo.usuario;  // Recupera el nombre de usuario
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+const indice = parseInt(sessionStorage.getItem("indiceUsuarioActivo"));
+const ahora = new Date();
 const fechaHora = ahora.toLocaleString();
 document.getElementById("saldo-actual").textContent = `$${usuarios[indice].saldo.toFixed(2)}`;
 document.getElementById("nombre-cliente").textContent = `Bienvenido, ${nombreUsuario}`;

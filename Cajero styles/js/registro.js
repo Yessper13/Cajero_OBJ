@@ -1,5 +1,8 @@
-function registrarUsuario(event) {
-  event.preventDefault(); // 👈 esto evita que el form recargue la página
+
+function Registrar(event) {
+  alert("Registro");
+  event.preventDefault();
+
 
   let tipoId = document.getElementById('tipoId').value;
   let numeroId = document.getElementById('numeroId').value;
@@ -7,36 +10,24 @@ function registrarUsuario(event) {
   let correo = document.getElementById('correo').value;
   let contrasena = document.getElementById('contrasena').value;
   let confirmar = document.getElementById('confirmarContrasena').value;
-  let saldo = 0;
 
-  let idValido = app.verificarregistro(numeroId);
-  let usuarioValido = app.verificarregistro2(usuario);
-  let correoValido = app.verificarregistro3(correo);
-
-  if (idValido) {
+  if (Usuario.verificarregistro(numeroId)) {
     alert("El documento ya está en uso.");
-    return false;
-  } else if (usuarioValido) {
+    return;
+  } else if (Usuario.verificarregistro2(usuario)) {
     alert("El usuario ya está en uso.");
-    return false;
-  } else if (correoValido) {
+    return;
+  } else if (Usuario.verificarregistro3(correo)) {
     alert("El correo ya está en uso.");
-    return false;
+    return;
   } else if (contrasena !== confirmar) {
     alert("Las contraseñas no coinciden.");
-    return false;
+    return;
   }
 
-  let nuevoUsuario = {
-    tipoId,
-    numeroId,
-    usuario,
-    correo,
-    contrasena,
-    saldo
-  };
+  const nuevoUsuario = new Usuario(tipoId, numeroId, usuario, correo, contrasena);
+  Usuario.registrarUsuario(nuevoUsuario);
 
-  app.registrarUsuario(nuevoUsuario);
   alert("Usuario registrado con éxito");
   limpiarCampos();
 
@@ -46,9 +37,8 @@ function registrarUsuario(event) {
   setTimeout(() => {
     window.location.href = "index.html";
   }, 3000);
-
-  return false; // 👈 opcional, pero ayuda a asegurar que el form no se envíe
 }
+
 
 
 function limpiarCampos(){ /*Funcion para limpiar campos del registro */

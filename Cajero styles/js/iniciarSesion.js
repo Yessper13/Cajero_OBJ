@@ -3,13 +3,15 @@ function entrar(event) {
   event.preventDefault();
   let usuario = document.getElementById('usuarioLogin').value;
   let contrasena = document.getElementById('contrasenaLogin').value;
-  let usuarioValido = app.verificarCredenciales(usuario, contrasena);
-  let logon = "N"
+  let usuarioValido = Usuario.verificarCredenciales(usuario, contrasena);
   if (usuarioValido) {
     // Guardar usuario e índice en sessionStorage
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioValido));
-
-    let indice = app.usuarios.findIndex(u =>
+    
+    let usuarios = Usuario.obtenerUsuarios();
+    
+    // Encontrar el índice del usuario dentro de la lista de usuarios
+    let indice = usuarios.findIndex(u =>
       u.usuario === usuarioValido.usuario && u.contrasena === usuarioValido.contrasena
     );
     sessionStorage.setItem("indiceUsuarioActivo", indice);
