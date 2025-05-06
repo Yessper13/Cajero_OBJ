@@ -32,7 +32,7 @@ class Usuario {
   }
 
   // Métodos estáticos para validar duplicados
-  static verificarregistro(numeroId) {
+  static verificarRegistro(numeroId) {
     const usuarios = Usuario.obtenerUsuarios();
     return usuarios.find(u => u.numeroId === numeroId);
   }

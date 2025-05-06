@@ -11,7 +11,7 @@ function Registrar(event) {
   let contrasena = document.getElementById('contrasena').value;
   let confirmar = document.getElementById('confirmarContrasena').value;
 
-  if (Usuario.verificarregistro(numeroId)) {
+  if (Usuario.verificarRegistro(numeroId)) {
     alert("El documento ya está en uso.");
     return;
   } else if (Usuario.verificarregistro2(usuario)) {
