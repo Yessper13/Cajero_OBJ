@@ -8,21 +8,29 @@
   </head>
   <body>
     <header class="main-header">
-    <div class="left-header">
-      <h1>Bienvenido al cajero automático </h1>
-      <p>Su saldo actual es: <span id="saldo-actual">$0.00</span></p>
-      <p> <span id="nombre-cliente"> </span></p>
-    </div>
-    <div class="right-header" class="tab" data-tab="5">
-      <a href="#" onclick="cargarPerfil()"><img src="../Image/perfil.png" alt="perfil" class="perfil-icon"></a>
-    </div>
+      <div class="left-header">
+        <h1>Bienvenido al cajero automático </h1>
+        <p>Su saldo actual es: <span id="saldo-actual">$0.00</span> en la cuenta:<span id="tipo-cuenta">0</span> numero <span id="cuenta-actual">0</span></p>
+        <p> <span id="nombre-cliente"> </span></p>
+        
+      </div>
+      
+      <div class="center-header transfer-form">
+        <button id="selectCuentaAhorros" value="0" type="button">Ahorros</button>
+        <button id="selectCuentaCorriente" value="1" type="button">Corriente</button>
+      </div>
+
+      <div class="right-header" class="tab" data-tab="5">
+        <a href="#" onclick="cargarPerfil()"><img src="../Image/perfil.png" alt="perfil" class="perfil-icon"></a>
+      </div>
     </header>
     <div>
       <div class="tabs" style="height: auto;">
         <div class="tab active" data-tab="1" onclick="cerrar()">Transferencia</div>
         <div class="tab" data-tab="2" onclick="cerrar()">Retiro</div>
         <div class="tab" data-tab="3" onclick="cerrar()">Recarga</div>
-        <div class="tab" data-tab="4" onclick="HistorialMovimientos(),cerrar()">Historial</div>
+        <div class="tab" data-tab="4" onclick="cerrar()">Historial</div>
+        <div class="tab" data-tab="6" onclick="cerrar()">Crea una cuenta</div>
         <!-- <div class="tab" data-tab="5"></div> -->
       </div>
       
@@ -121,9 +129,24 @@
           </div>
         </div>
       </div>
+      <div class="tab-content" data-content="6">
+        <div class="caja historial-caja">
+          <h2>Crea una cuenta de banco</h2>
+          <form class="transfer-form center-form" onsubmit="crearCuenta()">
+            <label for="tipoCuenta">Tipo de cuenta</label>
+            <select id="tipoCuenta" required class="input select">
+              <option value="">Seleccione tipo de cuenta</option>
+              <option value="corriente">Cuenta corriente</option>
+              <option value="ahorros">Cuenta de ahorros</option>
+            </select>
+            <button type="submit" class="btn">Crear cuenta</button>
+          </form>
+        </div>
+      </div>
       
-
-    <script src="/Cajero styles/js/transacciones.js"></script>
-    <script src="/Cajero styles/js/main.js"></script>
+    <script src="../pages/index.html"></script>
+    <script src="../js/transacciones.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cuenta.js"></script>
   </body>
 </html>
