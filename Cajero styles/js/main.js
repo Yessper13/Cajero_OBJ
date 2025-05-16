@@ -17,7 +17,7 @@ class Usuario {
   // Método estático: guardar lista de usuarios en localStorage
   static guardarUsuarios(listaUsuarios) {
     localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
-    window.location.href = "index.html"; // Redirigir a la página de inicio
+    /* window.location.href = "index.html"; // Redirigir a la página de inicio */
   }
 
   // Método estático: registrar un nuevo usuario

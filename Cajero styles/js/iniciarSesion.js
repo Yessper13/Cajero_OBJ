@@ -4,8 +4,7 @@ function entrar(event) {
   let usuario = document.getElementById('usuarioLogin').value;
   let contrasena = document.getElementById('contrasenaLogin').value;
   let usuarioValido = Usuario.verificarCredenciales(usuario, contrasena);
-  let cuentas = usuarioValido.cuentas;
-  
+  console.log(usuarioValido)
   if (usuarioValido) {
     // Guardar usuario e índice en sessionStorage
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioValido));
@@ -16,9 +15,9 @@ function entrar(event) {
     sessionStorage.setItem("indiceUsuarioActivo", indice);
     document.getElementById("loader").style.display = "flex";
     document.getElementById("mensajeRedireccion").textContent =
-      `Hola ${usuarioValido.usuario}, Bienvenid@ a nuestro cajero. Tienes ${cuentas.length} cuenta(s) registrada(s).`;
+      `Hola ${usuarioValido.usuario}, Bienvenid@ a nuestro cajero.`;
     setTimeout(() => {
-      window.location.href = `transacciones.html?cuentas=${cuentas.length}`;
+      window.location.href = `transacciones.html`;
     }, 3000);
   } else {
     alert("Usuario o contraseña incorrectos.");
