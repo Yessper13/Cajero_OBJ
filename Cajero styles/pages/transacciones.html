@@ -41,8 +41,11 @@
         <div class="caja">
           <h2>Transferencia entre cuentas</h2>
           <form class="transfer-form center-form" onsubmit="Transferencia(event);">
+            <label for="usuario">Usuario a transferir:</label>
+            <input type="text" id="usuario" name="cuenta" placeholder="Ej: Pepe" required>
+            
             <label for="cuenta">Cuenta a transferir:</label>
-            <input type="text" id="cuenta" name="cuenta" placeholder="Ej: 1234567890" required>
+            <input type="number" id="cuenta" name="cuenta" placeholder="Ej: 1234567890" required>
         
             <label for="valor">Valor a transferir:</label>
             <input type="number" id="valor" name="valor" placeholder="Ej: 50000" required>
@@ -125,14 +128,14 @@
            <div class="boton-continuar">
              <a href="#" onclick="actualizarContrasena()"><img src="../Image/flecha.png" alt="Continuar"></a>
            </div>
-            <button id="botton-perfil" type="button" onclick="cerrar()">Cerrar</button>
+            <button id="botton-perfil" type="button" onclick="cerrarC()">Cerrar</button>
           </div>
         </div>
       </div>
       <div class="tab-content" data-content="6">
         <div class="caja historial-caja">
           <h2>Crea una cuenta de banco</h2>
-          <form class="transfer-form center-form" onsubmit="crearCuenta()">
+          <form class="transfer-form center-form " onsubmit="crearCuenta()">
             <label for="tipoCuenta">Tipo de cuenta</label>
             <select id="tipoCuenta" required class="input select">
               <option value="">Seleccione tipo de cuenta</option>

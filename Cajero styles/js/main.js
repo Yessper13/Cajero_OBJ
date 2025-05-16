@@ -1,11 +1,10 @@
 class Usuario {
-  constructor(tipoId, numeroId, usuario, correo, contrasena,  saldo = 0,  cuentas=[]) {
+  constructor(tipoId, numeroId, usuario, correo, contrasena,  cuentas=[]) {
     this.tipoId = tipoId;
     this.numeroId = numeroId;
     this.usuario = usuario;
     this.correo = correo;
     this.contrasena = contrasena;
-    this.saldo = saldo;
     this.cuentas = cuentas;
   }
  
@@ -61,7 +60,6 @@ class Usuario {
     console.log(`Centas Registradas:`, Usuario.obtenerCuentas())
   }
 }
-
 
 function Registrar(event) {
   event.preventDefault();

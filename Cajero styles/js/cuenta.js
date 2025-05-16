@@ -35,7 +35,7 @@ class Cuenta {
             }
 
             // Crear un nuevo número de cuenta secuencial
-            const nroCuenta = cuentas.length + 1;
+            const nroCuenta = Number(cuentas.length + 1);
 
             // Crear el objeto de la nueva cuenta
             const nuevaCuenta = {
@@ -52,9 +52,10 @@ class Cuenta {
             // Asociar la cuenta al usuario actual
             usuarios[indiceUsuario].cuentas.push(nuevaCuenta);
             Usuario.guardarUsuarios(usuarios); // Guardar cambios en la lista de usuarios
-            alert("Cuenta creada con éxito. Su número de cuenta es: " + nroCuenta+" \n\tVuelve a iniciar para ver la cuenta creada");
+            alert("Cuenta creada con éxito. Su número de cuenta es: " + nroCuenta);
             // Actualizar los datos del usuario activo en sessionStorage
             sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
+            location.reload
         } else {
             // Mostrar mensaje si no hay sesión iniciada
             alert("Debe iniciar sesión para crear una cuenta.");
