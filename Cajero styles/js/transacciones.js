@@ -111,9 +111,9 @@ function Transferencia(event) { // Función que se ejecuta al hacer una transfer
     usuarios[destinoIndex].cuentas[indiceCuentaDestino].historial = [];
 
   // Registrar la transferencia en el historial de ambas cuentas
-  cuentaUser.historial.push(`-Transferencia de $${montoT.toFixed(2)} el ${fechaHora} a la cuenta ${usuarios[destinoIndex].cuentas[indiceCuentaDestino].nroCuenta}`);
+  cuentaUser.historial.push(`-Transferencia de $${montoT.toFixed(2)} el ${fechaHora} a la cuenta ${usuarios[destinoIndex].cuentas[indiceCuentaDestino].tipoCuenta} N° ${usuarios[destinoIndex].cuentas[indiceCuentaDestino].nroCuenta} a nombre de ${usuarioDestino}`);
   usuarios[destinoIndex].cuentas[indiceCuentaDestino].historial.push(
-    `-Recibiste una transferencia de $${montoT.toFixed(2)} el ${fechaHora} desde la cuenta ${cuentaUser.nroCuenta}`
+    `-Recibiste una transferencia de $${montoT.toFixed(2)} el ${fechaHora} desde la cuenta ${cuentaUser.nroCuenta} a nombre de ${nombreUsuario}`
   );
 
   // Actualizar saldo

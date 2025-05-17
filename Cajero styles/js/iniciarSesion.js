@@ -15,7 +15,7 @@ function entrar(event) {
     sessionStorage.setItem("indiceUsuarioActivo", indice);
     document.getElementById("loader").style.display = "flex";
     document.getElementById("mensajeRedireccion").textContent =
-      `Hola ${usuarioValido.usuario}, Bienvenid@ a nuestro cajero.`;
+      `Hola ${usuarioValido.usuario}, Bienvenid@ a Next Step, tu app de cajero.`;
     setTimeout(() => {
       window.location.href = `transacciones.html`;
     }, 3000);
